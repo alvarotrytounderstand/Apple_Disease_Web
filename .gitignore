@@ -1,0 +1,14 @@
+# Mengabaikan folder dataset gambar
+Apple_Disease_Dataset/
+
+# Mengabaikan file sistem dan virtual environment
+.ipynb_checkpoints/
+__pycache__/
+tf_gpu/
+.venv/
+.env
+
+# Mengabaikan model lama (kalau lu masukin ke folder archive)
+archive/
+
+*.zip
