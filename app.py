@@ -67,7 +67,7 @@ if uploaded_file is not None:
     with col1:
         st.subheader("📸 Gambar Daun")
         image = Image.open(uploaded_file).convert("RGB")
-        st.image(image, use_container_width=True, border=True)
+        st.image(image, use_container_width=True)
 
     with col2:
         st.subheader("📊 Hasil Analisis AI")
