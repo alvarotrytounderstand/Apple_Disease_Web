@@ -9,7 +9,7 @@ st.title("🍎 Apple Leaf Disease AI Detector")
 @st.cache_resource
 def load_my_model():
     # Ini pake nama model yang beneran lu save tadi di notebook
-    return tf.keras.models.load_model("apple_disease_model.h5")
+    return tf.keras.models.load_model("apple_disease_model.keras")
 
 model = load_my_model()
 
