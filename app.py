@@ -78,6 +78,7 @@ if uploaded_file is not None:
         img_array = np.expand_dims(img_array, axis=0)
 
         # Prediksi
+        img_array = preprocess_input(img_array)
         predictions = model.predict(img_array, verbose=0)[0]
         max_idx = np.argmax(predictions)
         
