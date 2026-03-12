@@ -2,7 +2,9 @@ import streamlit as st
 import tensorflow as tf
 import numpy as np
 from PIL import Image
-from tensorflow.keras.applications.mobilenet_v2 import preprocess_input
+
+# PERUBAHAN 1: Pakai preprocess_input punya ResNet50V2
+from tensorflow.keras.applications.resnet_v2 import preprocess_input
 
 # Setup Halaman
 st.set_page_config(page_title="Apple Leaf Disease Detection", page_icon="🍎", layout="wide")
@@ -14,8 +16,9 @@ st.divider()
 # Load Model
 @st.cache_resource
 def load_my_model():
+    # PERUBAHAN 2: Ganti nama file modelnya
     return tf.keras.models.load_model(
-        "apple_disease_robust.keras",
+        "resnet50v2_apple_disease.keras",
         custom_objects={"preprocess_input": preprocess_input}
     )
 

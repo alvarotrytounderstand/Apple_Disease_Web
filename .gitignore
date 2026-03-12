@@ -12,3 +12,6 @@ tf_gpu/
 archive/
 
 *.zip
+*.keras
+*.tflite
+*.h5
