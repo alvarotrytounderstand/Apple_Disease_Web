@@ -2,9 +2,10 @@ import streamlit as st
 import tensorflow as tf
 import numpy as np
 from PIL import Image
-
-# PERUBAHAN 1: Pakai preprocess_input punya ResNet50V2
 from tensorflow.keras.applications.resnet_v2 import preprocess_input
+
+# IMPORT KURIR HUGGING FACE
+from huggingface_hub import hf_hub_download
 
 # Setup Halaman
 st.set_page_config(page_title="Apple Leaf Disease Detection", page_icon="🍎", layout="wide")
@@ -13,12 +14,16 @@ st.title("🍎 Apple Leaf Disease Detection")
 st.markdown("Unggah gambar daun apel untuk mendeteksi penyakit secara otomatis menggunakan deep learning.")
 st.divider()
 
-# Load Model
+# Load Model dari Hugging Face
 @st.cache_resource
 def load_my_model():
-    # PERUBAHAN 2: Ganti nama file modelnya
+    # Streamlit bakal otomatis download & nyimpen modelnya di cache biar gak download ulang terus
+    model_path = hf_hub_download(
+        repo_id="alvaro16/Apple-Disease-ResNet",
+        filename="resnet50v2_apple_disease.keras"
+    )
     return tf.keras.models.load_model(
-        "resnet50v2_apple_disease.keras",
+        model_path,
         custom_objects={"preprocess_input": preprocess_input}
     )
 
